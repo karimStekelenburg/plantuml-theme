@@ -1,8 +1,5 @@
 @startuml
 
-!define DARK
-'!define TRANSPARANT
-
 !$ANIMO_BLUE_1 = "607DB9"
 !$ANIMO_BLUE_2 = "7993C4"
 !$ANIMO_BLUE_3 = "93AACE"
@@ -255,23 +252,5 @@ skinparam storage {
   basic_style()
   font_style()
 }
-
-
-
-class X {
-  - thing: int
-  someValue()
-}
-
-class Y {
-  - thing: int
-  someValue()
-}
-
-note right of X: Hi
-
-X <|-- Y: joins
-
-
 
 @enduml
