@@ -1,16 +1,18 @@
 @startuml
 
-!$ANIMO_BLUE_1 = "607DB9"
-!$ANIMO_BLUE_2 = "7993C4"
-!$ANIMO_BLUE_3 = "93AACE"
-!$ANIMO_BLUE_4 = "B1BFDB"
-!$ANIMO_BLUE_5 = "D4DEE8"
+!define DARK
 
-!$ANIMO_WHITE_1 = "EFF0F0"
-!$ANIMO_WHITE_2 = "F3F6F3"
-!$ANIMO_WHITE_3 = "F9FAF8"
-!$ANIMO_WHITE_4 = "FBFBFA"
-!$ANIMO_WHITE_5 = "FFFFFF"
+!$ANIMO_BLUE_1 = "#607DB9"
+!$ANIMO_BLUE_2 = "#7993C4"
+!$ANIMO_BLUE_3 = "#93AACE"
+!$ANIMO_BLUE_4 = "#B1BFDB"
+!$ANIMO_BLUE_5 = "#D4DEE8"
+
+!$ANIMO_WHITE_1 = "#EFF0F0"
+!$ANIMO_WHITE_2 = "#F3F6F3"
+!$ANIMO_WHITE_3 = "#F9FAF8"
+!$ANIMO_WHITE_4 = "#FBFBFA"
+!$ANIMO_WHITE_5 = "#FFFFFF"
 
 !$ANIMO_RED_1 = "#D36E6B"
 !$ANIMO_RED_2 = "#D88583"
@@ -36,14 +38,14 @@
 skinparam backgroundColor #1a1d21
 !$ACCENT = $ANIMO_BLUE_1
 !$ACCENTDARK = $ANIMO_BLUE_2
-skinparam stereotypeCBackgroundColor $ACCENT
+skinparam stereotypeCBackgroundColor "#0000"
 !define DARKSTYLE
 !endif
 
 !ifdef LIGHT
 !$ACCENT = $ANIMO_RED_4
 !$ACCENTDARK = $ANIMO_RED_1
-skinparam stereotypeCBackgroundColor $ACCENTDARK
+skinparam stereotypeCBackgroundColor "#0000"
 !define LIGHTSTYLE
 !endif
 
@@ -60,15 +62,17 @@ skinparam backgroundColor $ANIMO_WHITE_4
 !endif
 
 !ifdef DARKSTYLE
+!$BGCOL = $ANIMO_BLACK_1
+' !$BGCOL = "#000000"
 !$PRIMARYFONTCOLOR = $ANIMO_WHITE_1
 !$SECONDARY = $ANIMO_BLACK_5
 !$ARROWCOLOR = $ANIMO_BLACK_5
 !$ARROWFONTCOLOR = $ANIMO_BLACK_5
 !$BORDERCOLOR = $ANIMO_BLUE_1
-!$BOXBG = $ANIMO_BLACK_1
+!$BOXBG = $BGCOL
 !$LIGHTBORDERCOLOR = "767676"
 !$LIGHTBG = "575757"
-skinparam backgroundColor $ANIMO_BLACK_1
+skinparam backgroundColor $BGCOL
 !endif
 
 !ifdef TRANSPARANT
@@ -110,20 +114,30 @@ skinparam roundcorner 5
 
 ' Class diagrams
 
+
+skinparam stereotypeCBackgroundColor yellow
+skinparam stereotypeIBackgroundColor yellow
+skinparam stereotypeEBackgroundColor yellow
+
 skinparam circledCharacter {
   radius 8
+  CharacterFontColor yellow
   fontSize $FONTSIZE
   fontName $FONTNAME
 }
+
+' skinparam classBackgroundColor #fff
+' skinparam ClassHeaderBackgroundColor $ANIMO_BLUE_5
 
 skinparam class {
   basic_style()
   font_style()
   arrow_style()
-
+  
   attributeFontColor $SECONDARY
   attributeFontSize $FONTSIZE
   attributeIconSize $FONTSIZE
+
 }
 
 ' Sequence diagrams
@@ -252,5 +266,22 @@ skinparam storage {
   basic_style()
   font_style()
 }
+
+
+class X {
+  - thing: int
+  someValue()
+}
+
+class Y {
+  - thing: int
+  someValue()
+}
+
+note right of X: Hi
+
+X <|-- Y: joins
+
+interface P
 
 @enduml
